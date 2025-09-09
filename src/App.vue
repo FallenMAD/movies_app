@@ -12,17 +12,18 @@ import HelloWorld from './components/HelloWorld.vue'
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/favourites">Favourites</RouterLink>
+        <RouterLink to="/rated">Rated</RouterLink>
       </nav>
     </div>
 
-    <v-app>
+    <!-- <v-app>
       <v-main>
         <v-container>
           <v-btn color="primary">Hello Vuetify</v-btn>
         </v-container>
       </v-main>
-    </v-app>
+    </v-app> -->
   </header>
 
   <RouterView />
