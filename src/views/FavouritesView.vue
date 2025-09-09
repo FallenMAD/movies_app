@@ -1,4 +1,6 @@
 <script>
+import { RouterView } from 'vue-router'
+
 export default {
   name: 'FavouritesView',
 }
@@ -8,6 +10,8 @@ export default {
   <div class="about">
     <h1>This is an about page</h1>
   </div>
+
+  <RouterView />
 </template>
 
 <style>
