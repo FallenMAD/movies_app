@@ -15,6 +15,14 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
+
+    <v-app>
+      <v-main>
+        <v-container>
+          <v-btn color="primary">Hello Vuetify</v-btn>
+        </v-container>
+      </v-main>
+    </v-app>
   </header>
 
   <RouterView />
