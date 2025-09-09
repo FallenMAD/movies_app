@@ -8,6 +8,7 @@ export default {
   <div class="about">
     <h1>This is a rated page</h1>
   </div>
+  <RouterView />
 </template>
 
 <style>
