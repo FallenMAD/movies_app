@@ -12,8 +12,9 @@ import HelloWorld from './components/HelloWorld.vue'
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/favourites">Favourites</RouterLink>
-        <RouterLink to="/rated">Rated</RouterLink>
+        <RouterLink to="/popular">Popular</RouterLink>
+        <RouterLink to="/top-rated">Top Rated</RouterLink>
+        <RouterLink to="/upcoming">Upcoming</RouterLink>
       </nav>
     </div>
 
