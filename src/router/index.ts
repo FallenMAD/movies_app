@@ -10,9 +10,13 @@ const router = createRouter({
     },
     {
       path: '/popular',
-      name: 'popular',
-      component: () => import('../views/PopularView.vue'),
+      component: () => import('../views/RootView.vue'),
       children: [
+        {
+          path: '',
+          name: 'popular',
+          component: () => import('../views/PopularView.vue'),
+        },
         {
           path: ':id',
           name: 'popular-item',
@@ -22,9 +26,13 @@ const router = createRouter({
     },
     {
       path: '/top-rated',
-      name: 'top-rated',
-      component: () => import('../views/TopRatedView.vue'),
+      component: () => import('../views/RootView.vue'),
       children: [
+        {
+          path: '',
+          name: 'top-rated',
+          component: () => import('../views/TopRatedView.vue'),
+        },
         {
           path: ':id',
           name: 'top-rated-item',
@@ -34,9 +42,13 @@ const router = createRouter({
     },
     {
       path: '/upcoming',
-      name: 'upcoming',
-      component: () => import('../views/UpcomingView.vue'),
+      component: () => import('../views/RootView.vue'),
       children: [
+        {
+          path: '',
+          name: 'upcoming',
+          component: () => import('../views/UpcomingView.vue'),
+        },
         {
           path: ':id',
           name: 'upcoming-item',
