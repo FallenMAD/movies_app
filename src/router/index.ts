@@ -12,11 +12,25 @@ const router = createRouter({
       path: '/favourites',
       name: 'favourites',
       component: () => import('../views/FavouritesView.vue'),
+      children: [
+        {
+          path: ':id',
+          name: 'favourite-item',
+          component: () => import('../views/FavouriteItemView.vue'),
+        },
+      ],
     },
     {
       path: '/rated',
       name: 'rated',
       component: () => import('../views/RatedView.vue'),
+      children: [
+        {
+          path: ':id',
+          name: 'rated-item',
+          component: () => import('../views/RatedItemView.vue'),
+        },
+      ],
     },
   ],
 })
