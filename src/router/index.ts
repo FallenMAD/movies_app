@@ -1,15 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { RoutePaths } from '../types/AppRouterPaths.enum'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: RoutePaths.HOME,
       name: 'home',
       component: () => import('../views/HomeView.vue'),
     },
     {
-      path: '/popular',
+      path: RoutePaths.POPULAR,
       component: () => import('../views/RootView.vue'),
       children: [
         {
@@ -25,7 +26,7 @@ const router = createRouter({
       ],
     },
     {
-      path: '/top-rated',
+      path: RoutePaths.TOP_RATED,
       component: () => import('../views/RootView.vue'),
       children: [
         {
@@ -41,7 +42,7 @@ const router = createRouter({
       ],
     },
     {
-      path: '/upcoming',
+      path: RoutePaths.UPCOMING,
       component: () => import('../views/RootView.vue'),
       children: [
         {
@@ -57,7 +58,7 @@ const router = createRouter({
       ],
     },
     {
-      path: '/:pathMatch(.*)*',
+      path: RoutePaths.NOT_FOUND,
       name: 'NotFound',
       component: () => import('../views/NotFoundView.vue'),
     },
