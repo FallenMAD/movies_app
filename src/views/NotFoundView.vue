@@ -7,17 +7,11 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="not-found">
-    <h1>This is a not found page</h1>
-  </div>
+  <v-container class="my-5">
+    <v-row>
+      <v-col class="d-flex justify-center align-center flex-column">
+        <h1 class="text-h4 font-weight-bold mb-2">Not Found Page</h1>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
-
-<style>
-@media (min-width: 1024px) {
-  .not-found {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
