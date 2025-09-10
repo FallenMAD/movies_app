@@ -1,7 +1,9 @@
 <script>
-export default {
-  name: 'RatedView',
-}
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'TopRatedView',
+})
 </script>
 
 <template>
