@@ -1,7 +1,16 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import { RouterView } from 'vue-router'
+import { defineComponent } from 'vue'
+
 import SideBar from './components/SideBar.vue'
+
+export default defineComponent({
+  name: 'App',
+  components: {
+    SideBar,
+    RouterView,
+  },
+})
 </script>
 
 <template>
@@ -15,5 +24,3 @@ import SideBar from './components/SideBar.vue'
     </v-layout>
   </v-app>
 </template>
-
-<style scoped></style>
