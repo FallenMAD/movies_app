@@ -1,25 +1,17 @@
 <script>
-import { RouterView } from 'vue-router'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'UpcomingItemView',
-}
+})
 </script>
 
 <template>
-  <div class="upcoming-item">
-    <h1>This is an upcoming item page</h1>
-  </div>
-
-  <RouterView />
+  <v-container class="my-5">
+    <v-row>
+      <v-col class="d-flex justify-center align-center flex-column">
+        <h1 class="text-h6 font-weight-bold mb-2">Upcoming Movie Item</h1>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
-
-<style>
-@media (min-width: 1024px) {
-  .upcoming-item {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
