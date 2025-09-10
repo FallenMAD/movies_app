@@ -1,17 +1,15 @@
 <script>
-import { RouterView } from 'vue-router'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'PopularView',
-}
+})
 </script>
 
 <template>
   <div class="popular">
     <h1>This is a popular page</h1>
   </div>
-
-  <RouterView />
 </template>
 
 <style>
