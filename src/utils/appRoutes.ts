@@ -6,7 +6,7 @@ export const appRoutes: AppRoute[] = [
     path: RoutePaths.HOME,
     name: 'home',
     title: 'Home',
-    subtitle: 'Playing now',
+    subtitle: 'Home Page',
     icon: 'mdi-play-circle-outline',
   },
   {
