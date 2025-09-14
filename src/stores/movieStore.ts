@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { apiClient } from '@/services/apiClient'
 import type { Movie } from '@/types/Movie.interface'
 
-export const usePopularMovieStore = defineStore('popularMovie', {
+export const useMovieStore = defineStore('movieStore', {
   state: () => ({
     movies: [] as Movie[],
     loading: false,
@@ -13,10 +13,10 @@ export const usePopularMovieStore = defineStore('popularMovie', {
     currentMovie: null as Movie | null,
   }),
   actions: {
-    async fetchPopularMovies(page: number) {
+    async fetchPopularMovies(page: number, genre: string) {
       this.loading = true
       try {
-        const response = await apiClient.get('/popular', {
+        const response = await apiClient.get(`/${genre}`, {
           params: {
             language: 'en-US',
             page: page,
