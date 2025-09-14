@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -7,5 +7,5 @@ export default defineComponent({
 </script>
 
 <template>
-  <ViewTitle title="Home Movies" subtitle="Here you can see all playing now movies." />
+  <ViewTitle title="Home Movies" subtitle="Home page" />
 </template>
