@@ -2,12 +2,12 @@
 import { defineComponent } from 'vue'
 
 import type { Movie } from '@/types/Movie.interface'
-import MovieCard from '@/components/MovieCard.vue'
+import MovieListCard from '@/components/MovieListCard.vue'
 
 export default defineComponent({
   name: 'MoviesList',
   components: {
-    MovieCard,
+    MovieListCard,
   },
   props: {
     movies: {
@@ -22,7 +22,7 @@ export default defineComponent({
   <v-container>
     <v-row>
       <v-col v-for="movie in movies" :key="movie.id" cols="3">
-        <MovieCard :movie="movie" />
+        <MovieListCard :movie="movie" />
       </v-col>
     </v-row>
   </v-container>
