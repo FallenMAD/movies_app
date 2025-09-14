@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useMovieStore } from '@/stores/popularMovie'
+import { useMovieStore } from '@/stores/movieStore'
 
 export default defineComponent({
   name: 'PopularView',

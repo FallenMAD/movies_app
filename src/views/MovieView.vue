@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useMovieStore } from '@/stores/popularMovie'
+import { useMovieStore } from '@/stores/movieStore'
 import MoviesList from '@/components/MoviesList.vue'
 import { useRoute } from 'vue-router'
 
