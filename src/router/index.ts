@@ -10,56 +10,24 @@ const router = createRouter({
       component: () => import('../views/HomeView.vue'),
     },
     {
-      path: RoutePaths.POPULAR,
+      path: RoutePaths.CATEGORY,
       component: () => import('../views/RootView.vue'),
       children: [
         {
           path: '',
-          name: 'popular',
-          component: () => import('../views/PopularView.vue'),
+          name: 'movie',
+          component: () => import('../views/MovieView.vue'),
         },
         {
           path: ':id',
-          name: 'popular-item',
-          component: () => import('../views/PopularItemView.vue'),
-        },
-      ],
-    },
-    {
-      path: RoutePaths.TOP_RATED,
-      component: () => import('../views/RootView.vue'),
-      children: [
-        {
-          path: '',
-          name: 'top-rated',
-          component: () => import('../views/TopRatedView.vue'),
-        },
-        {
-          path: ':id',
-          name: 'top-rated-item',
-          component: () => import('../views/TopRatedItemView.vue'),
-        },
-      ],
-    },
-    {
-      path: RoutePaths.UPCOMING,
-      component: () => import('../views/RootView.vue'),
-      children: [
-        {
-          path: '',
-          name: 'upcoming',
-          component: () => import('../views/UpcomingView.vue'),
-        },
-        {
-          path: ':id',
-          name: 'upcoming-item',
-          component: () => import('../views/UpcomingItemView.vue'),
+          name: 'movie-item',
+          component: () => import('../views/MovieItemView.vue'),
         },
       ],
     },
     {
       path: RoutePaths.NOT_FOUND,
-      name: 'NotFound',
+      name: 'not-found',
       component: () => import('../views/NotFoundView.vue'),
     },
   ],
