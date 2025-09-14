@@ -1,17 +1,18 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useMovieStore } from '@/stores/movieStore'
+
+import type { Movie } from '@/types/Movie.interface'
+import MovieCard from '@/components/MovieCard.vue'
 
 export default defineComponent({
-  name: 'PopularView',
-  data() {
-    return {
-      store: useMovieStore(),
-    }
+  name: 'MoviesList',
+  components: {
+    MovieCard,
   },
-  computed: {
-    popularMovies() {
-      return this.store.movies
+  props: {
+    movies: {
+      type: Array as () => Movie[],
+      required: true,
     },
   },
 })
@@ -20,15 +21,8 @@ export default defineComponent({
 <template>
   <v-container>
     <v-row>
-      <v-col v-for="movie in popularMovies" :key="movie.id" cols="3">
-        <v-card>
-          <v-img
-            :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
-            :alt="movie.title"
-            height="300"
-          />
-          <v-card-title>{{ movie.title }}</v-card-title>
-        </v-card>
+      <v-col v-for="movie in movies" :key="movie.id" cols="3">
+        <MovieCard :movie="movie" />
       </v-col>
     </v-row>
   </v-container>
