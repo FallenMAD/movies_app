@@ -7,10 +7,6 @@ export const useMovieStore = defineStore('movieStore', {
     movies: [] as Movie[],
     loading: false,
     error: null as string | null,
-    page: 1,
-    totalPages: 1,
-    totalResults: 0,
-    currentMovie: null as Movie | null,
   }),
   actions: {
     async fetchPopularMovies(page: number, genre: string) {
@@ -23,16 +19,11 @@ export const useMovieStore = defineStore('movieStore', {
           },
         })
         this.movies = response.data.results
-        this.totalPages = response.data.total_pages
-        this.totalResults = response.data.total_results
       } catch (error: any) {
         this.error = error.message
       } finally {
         this.loading = false
       }
-    },
-    selectMovie(movie: Movie) {
-      this.currentMovie = movie
     },
   },
 })
