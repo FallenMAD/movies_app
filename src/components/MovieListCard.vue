@@ -11,11 +11,23 @@ export default defineComponent({
       required: true,
     },
   },
+  methods: {
+    goToDetails(id: number) {
+      this.$router.push({ name: 'movie-item', params: { id } })
+    },
+  },
 })
 </script>
 
 <template>
-  <v-card class="mx-auto my-4" max-width="250" elevation="6" rounded="lg">
+  <v-card
+    class="mx-auto my-4"
+    max-width="250"
+    elevation="6"
+    rounded="lg"
+    hover
+    @click="goToDetails(movie.id)"
+  >
     <v-img
       :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
       :alt="movie.title"
