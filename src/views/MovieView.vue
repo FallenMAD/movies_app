@@ -1,8 +1,9 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { capitalize, defineComponent } from 'vue'
+import { useRoute } from 'vue-router'
+
 import { useMovieStore } from '@/stores/movieStore'
 import MoviesList from '@/components/MoviesList.vue'
-import { useRoute } from 'vue-router'
 
 export default defineComponent({
   name: 'MovieView',
@@ -16,6 +17,21 @@ export default defineComponent({
   computed: {
     genreID() {
       return this.route.params.category as string
+    },
+    transformedGenreName() {
+      return this.genreID.replace('_', ' ')
+    },
+    capitalizedGenreName() {
+      return capitalize(this.transformedGenreName)
+    },
+    movies() {
+      return this.store.movies
+    },
+    loading() {
+      return this.store.loading
+    },
+    error() {
+      return this.store.error
     },
   },
   mounted() {
@@ -31,6 +47,18 @@ export default defineComponent({
 </script>
 
 <template>
-  <ViewTitle title="Movie List" subtitle="Here you can see all popular releases." />
-  <MoviesList />
+  <ViewTitle
+    :title="`${capitalizedGenreName} List`"
+    :subtitle="`Here you can see all ${transformedGenreName} movies`"
+  />
+
+  <v-skeleton-loader type="card" v-if="loading" />
+
+  <v-alert type="error" v-else-if="error">
+    {{ error }}
+  </v-alert>
+
+  <v-alert type="info" v-else-if="movies.length === 0"> No movies found. </v-alert>
+
+  <MoviesList v-else :movies="movies" />
 </template>
