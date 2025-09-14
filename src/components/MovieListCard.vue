@@ -4,7 +4,7 @@ import { defineComponent } from 'vue'
 import type { Movie } from '@/types/Movie.interface'
 
 export default defineComponent({
-  name: 'MoviesCard',
+  name: 'MoviesListCard',
   props: {
     movie: {
       type: Object as () => Movie,
