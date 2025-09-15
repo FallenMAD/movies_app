@@ -1,6 +1,7 @@
 <script lang="ts">
-import type { MovieItem } from '@/types/MovieItem.interface'
 import { defineComponent } from 'vue'
+
+import type { MovieItem } from '@/types/MovieItem.interface'
 
 export default defineComponent({
   name: 'MovieItemCard',

@@ -1,9 +1,10 @@
 <script lang="ts">
+import { defineComponent } from 'vue'
+import { useRoute } from 'vue-router'
+
 import MovieItemCard from '@/components/MovieItemCard.vue'
 import { useMovieItemStore } from '@/stores/movieItemStore'
 import type { MovieItem } from '@/types/MovieItem.interface'
-import { defineComponent } from 'vue'
-import { useRoute } from 'vue-router'
 
 export default defineComponent({
   name: 'MovieItemView',
@@ -43,7 +44,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <ViewTitle title="Popular Movie Item" />
+  <ViewTitle :title="movie?.title || 'Movie Details'" />
 
   <v-skeleton-loader type="card" v-if="loading" />
 
@@ -55,7 +56,16 @@ export default defineComponent({
     </template>
   </MovieItemCard>
 
-  <v-alert v-else-if="error" type="error" class="my-6">
-    {{ error }}
-  </v-alert>
+  <div class="mx-auto" style="max-width: 600px" v-else-if="error">
+    <v-alert
+      type="error"
+      elevation="2"
+      border="start"
+      rounded
+      dense
+      class="px-4 py-2 text-sm font-medium text-center"
+    >
+      {{ error }}; please try again later.
+    </v-alert>
+  </div>
 </template>

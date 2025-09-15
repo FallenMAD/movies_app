@@ -1,5 +1,6 @@
 <script>
 import { defineComponent } from 'vue'
+
 import { appRoutes } from '../utils/appRoutes'
 
 export default defineComponent({
