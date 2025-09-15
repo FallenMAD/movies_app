@@ -9,7 +9,7 @@ export const useMovieStore = defineStore('movieStore', {
     error: null as string | null,
   }),
   actions: {
-    async fetchPopularMovies(page: number, genre: string) {
+    async getMovies(page: number, genre: string) {
       this.loading = true
       try {
         const response = await apiClient.get(`/${genre}`, {
