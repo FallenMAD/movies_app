@@ -45,11 +45,8 @@ export default defineComponent({
         })
       },
     },
-    loadingWatcher() {
-      return this.store.loading
-    },
   },
-  mounted() {
+  created() {
     this.store.getMovies(this.page, this.genreID)
   },
   watch: {
@@ -59,7 +56,7 @@ export default defineComponent({
     'route.query.page'(newPage) {
       this.store.getMovies(newPage || 1, this.genreID)
     },
-    loadingWatcher: {
+    loading: {
       handler: async function (loading: boolean) {
         if (!loading) {
           await nextTick()
