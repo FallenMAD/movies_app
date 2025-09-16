@@ -1,5 +1,5 @@
 <script lang="ts">
-import { capitalize, defineComponent, nextTick } from 'vue'
+import { capitalize, defineComponent } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { useMovieStore } from '@/stores/moviesStore'
@@ -55,20 +55,6 @@ export default defineComponent({
     },
     'route.query.page'(newPage) {
       this.store.getMovies(newPage || 1, this.genreID)
-    },
-    loading: {
-      handler: async function (loading: boolean) {
-        if (!loading) {
-          await nextTick()
-          const pos = history.state.scroll
-          if (pos && typeof pos.top === 'number') {
-            window.scrollTo({ top: pos.top, left: pos.left, behavior: 'auto' })
-          }
-        } else {
-          window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-        }
-      },
-      immediate: true,
     },
   },
 })
