@@ -2,14 +2,20 @@
 import { defineComponent } from 'vue'
 
 import type { MovieItem } from '@/types/MovieItem.interface'
+import { BASE_IMG_URL } from '@/utils/BASE_IMG_URL'
 
 export default defineComponent({
   name: 'MovieItemCard',
   props: {
     movie: {
-      type: Object as () => MovieItem | null,
+      type: Object as () => MovieItem,
       required: true,
     },
+  },
+  data() {
+    return {
+      BASE_IMG_URL,
+    }
   },
 })
 </script>
@@ -20,7 +26,7 @@ export default defineComponent({
     <v-row>
       <v-col cols="12" md="4">
         <v-img
-          :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+          :src="`${BASE_IMG_URL}${movie.poster_path}`"
           :alt="movie.title"
           height="500"
           class="rounded-lg"
