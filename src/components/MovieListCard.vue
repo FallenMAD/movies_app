@@ -2,6 +2,7 @@
 import { defineComponent } from 'vue'
 
 import type { Movie } from '@/types/Movie.interface'
+import { BASE_IMG_URL } from '@/utils/BASE_IMG_URL'
 
 export default defineComponent({
   name: 'MoviesListCard',
@@ -10,6 +11,11 @@ export default defineComponent({
       type: Object as () => Movie,
       required: true,
     },
+  },
+  data() {
+    return {
+      BASE_IMG_URL,
+    }
   },
   methods: {
     goToDetails(id: number) {
@@ -29,7 +35,7 @@ export default defineComponent({
     @click="goToDetails(movie.id)"
   >
     <v-img
-      :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+      :src="`${BASE_IMG_URL}${movie.poster_path}`"
       :alt="movie.title"
       height="375"
       class="rounded-t-lg"
@@ -37,7 +43,9 @@ export default defineComponent({
     />
 
     <v-card-text class="d-flex justify-space-between align-center">
-      <span class="text-h6 text-truncate">{{ movie.title }}</span>
+      <v-card-title class="w-75 text-h6 font-weight-bold px-0 text-truncate">{{
+        movie.title
+      }}</v-card-title>
       <div class="d-flex align-center">
         <v-icon color="amber darken-2" size="18" class="mr-1">mdi-star</v-icon>
         <span>{{ movie.vote_average.toFixed(1) }}</span>
