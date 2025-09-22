@@ -56,16 +56,5 @@ export default defineComponent({
     </template>
   </MovieItemCard>
 
-  <div class="mx-auto" style="max-width: 600px" v-else-if="error">
-    <v-alert
-      type="error"
-      elevation="2"
-      border="start"
-      rounded
-      dense
-      class="px-4 py-2 text-sm font-medium text-center"
-    >
-      {{ error }}; please try again later.
-    </v-alert>
-  </div>
+  <Error v-else="error" :error="error" />
 </template>
