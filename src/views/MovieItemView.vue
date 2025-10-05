@@ -23,7 +23,7 @@ export default defineComponent({
       return this.route.params.category as string
     },
     movie() {
-      return this.store.movie
+      return this.store.movie as MovieItem | null
     },
     loading() {
       return this.store.loading
@@ -48,7 +48,7 @@ export default defineComponent({
 
   <v-skeleton-loader type="card" v-if="loading" />
 
-  <MovieItemCard v-else-if="movie" :movie="movie as MovieItem">
+  <MovieItemCard v-else-if="movie" :movie="movie">
     <template #btn>
       <v-btn icon text class="ma-4" @click="goBack">
         <v-icon>mdi-arrow-left</v-icon>
