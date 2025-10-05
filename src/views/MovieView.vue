@@ -2,7 +2,7 @@
 import { capitalize, defineComponent } from 'vue'
 import { useRoute } from 'vue-router'
 
-import { useMovieStore } from '@/stores/moviesStore'
+import { useMoviesStore } from '@/stores/moviesStore.ts'
 import MoviesList from '@/components/MoviesList.vue'
 
 export default defineComponent({
@@ -10,7 +10,7 @@ export default defineComponent({
   components: { MoviesList },
   data() {
     return {
-      store: useMovieStore(),
+      store: useMoviesStore(),
       route: useRoute(),
     }
   },
@@ -23,16 +23,7 @@ export default defineComponent({
     },
     capitalizedGenreName() {
       return capitalize(this.transformedGenreName)
-    },
-    movies() {
-      return this.store.movies
-    },
-    loading() {
-      return this.store.loading
-    },
-    error() {
-      return this.store.error
-    },
+    }
     page: {
       get() {
         return Number(this.route.query.page || 1)
@@ -66,17 +57,17 @@ export default defineComponent({
     :subtitle="`Here you can see all ${transformedGenreName} movies`"
   />
 
-  <v-skeleton-loader type="card" v-if="loading" />
+  <v-skeleton-loader type="card" v-if="store.isLoading" />
 
-  <Error v-else-if="error" :error="error" />
+  <Error v-else-if="store.getError" :error="store.getError" />
 
-  <v-alert type="info" v-else-if="movies.length === 0"> No movies found. </v-alert>
+  <v-alert type="info" v-else-if="store.getMovieItems.length === 0"> No movies found. </v-alert>
 
-  <MoviesList v-else :movies="movies" />
+  <MoviesList v-else :movies="store.getMovieItems" />
 
   <v-pagination
     v-model="page"
-    v-if="!loading && !error && movies.length > 0"
+    v-if="!store.isLoading && !store.getError && store.getMovieItems.length > 0"
     :length="20"
     :total-visible="6"
     class="my-4"
