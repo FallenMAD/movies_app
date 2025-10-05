@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { defineStore } from 'pinia'
 import { apiClient } from '@/services/apiClient'
 import type { Movie } from '@/types/Movie.interface'
@@ -19,8 +20,14 @@ export const useMovieStore = defineStore('movieStore', {
           },
         })
         this.movies = response.data.results
-      } catch (error: any) {
-        this.error = error.message
+      } catch (err: unknown) {
+        if (axios.isAxiosError(err)) {
+          this.error = err.message
+        } else if (err instanceof Error) {
+          this.error = err.message
+        } else {
+          this.error = String(err)
+        }
       } finally {
         this.loading = false
       }

@@ -6,7 +6,12 @@ export interface MovieItem extends BaseMovie {
   genres: { id: number; name: string }[]
   homepage: string
   imdb_id: string | null
-  production_companies: any[]
+  production_companies: {
+    id: number
+    logo_path: string | null
+    name: string
+    origin_country: string
+  }[]
   production_countries: { iso_3166_1: string; name: string }[]
   revenue: number
   runtime: number | null

@@ -23,7 +23,7 @@ export default defineComponent({
       return this.route.params.category as string
     },
     movie() {
-      return this.store.movie
+      return this.store.movie as MovieItem | null
     },
     loading() {
       return this.store.loading
@@ -48,7 +48,7 @@ export default defineComponent({
 
   <v-skeleton-loader type="card" v-if="loading" />
 
-  <MovieItemCard v-else-if="movie" :movie="movie as MovieItem">
+  <MovieItemCard v-else-if="movie" :movie="movie">
     <template #btn>
       <v-btn icon text class="ma-4" @click="goBack">
         <v-icon>mdi-arrow-left</v-icon>
@@ -56,16 +56,5 @@ export default defineComponent({
     </template>
   </MovieItemCard>
 
-  <div class="mx-auto" style="max-width: 600px" v-else-if="error">
-    <v-alert
-      type="error"
-      elevation="2"
-      border="start"
-      rounded
-      dense
-      class="px-4 py-2 text-sm font-medium text-center"
-    >
-      {{ error }}; please try again later.
-    </v-alert>
-  </div>
+  <Error v-else="error" :error="error" />
 </template>

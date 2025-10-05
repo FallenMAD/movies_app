@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { defineStore } from 'pinia'
 
 import { apiClient } from '@/services/apiClient'
@@ -17,8 +18,14 @@ export const useMovieItemStore = defineStore('movieItemStore', {
           params: { language: 'en-US' },
         })
         this.movie = response.data
-      } catch (error: any) {
-        this.error = error.message
+      } catch (err: unknown) {
+        if (axios.isAxiosError(err)) {
+          this.error = err.message
+        } else if (err instanceof Error) {
+          this.error = err.message
+        } else {
+          this.error = String(err)
+        }
       } finally {
         this.loading = false
       }
