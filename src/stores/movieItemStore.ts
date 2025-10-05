@@ -31,4 +31,9 @@ export const useMovieItemStore = defineStore('movieItemStore', {
       }
     },
   },
+  getters: {
+    isLoading: (state) => state.loading,
+    getMovie: (state) => state.movie,
+    getError: (state) => state.error,
+  },
 })
