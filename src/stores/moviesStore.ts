@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { apiClient } from '@/services/apiClient'
 import type { Movie } from '@/types/Movie.interface'
 
-export const useMovieStore = defineStore('movieStore', {
+export const useMoviesStore = defineStore('moviesStore', {
   state: () => ({
     movies: [] as Movie[],
     loading: false,
@@ -32,5 +32,10 @@ export const useMovieStore = defineStore('movieStore', {
         this.loading = false
       }
     },
+  },
+  getters: {
+    isLoading: (state) => state.loading,
+    getMovieItems: (state) => state.movies,
+    getError: (state) => state.error,
   },
 })
