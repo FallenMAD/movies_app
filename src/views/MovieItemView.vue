@@ -22,15 +22,6 @@ export default defineComponent({
     genreID() {
       return this.route.params.category as string
     },
-    movie() {
-      return this.store.movie as MovieItem | null
-    },
-    loading() {
-      return this.store.loading
-    },
-    error() {
-      return this.store.error
-    },
   },
   methods: {
     goBack() {
@@ -44,11 +35,11 @@ export default defineComponent({
 </script>
 
 <template>
-  <ViewTitle :title="movie?.title || 'Movie Details'" />
+  <ViewTitle :title="store.getMovie?.title || 'Movie Details'" />
 
-  <v-skeleton-loader type="card" v-if="loading" />
+  <v-skeleton-loader type="card" v-if="store.isLoading" />
 
-  <MovieItemCard v-else-if="movie" :movie="movie">
+  <MovieItemCard v-else-if="store.getMovie" :movie="store.getMovie">
     <template #btn>
       <v-btn icon text class="ma-4" @click="goBack">
         <v-icon>mdi-arrow-left</v-icon>
@@ -56,5 +47,5 @@ export default defineComponent({
     </template>
   </MovieItemCard>
 
-  <Error v-else="error" :error="error" />
+  <Error v-else :error="store.getError" />
 </template>
